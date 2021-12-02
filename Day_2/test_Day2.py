@@ -18,7 +18,7 @@ def test_parse_example1(example1):
     """Test that example input is properly parsed"""
     assert example1 == ["forward 5", "down 5", "forward 8", "up 3", "down 8", "forward 2"]
 
-@pytest.mark.skip(reason="not implemented")
+@pytest.mark.skip(reason="data same as example 1")
 def test_parse_example2(example2):
     """Test that example input is properly parsed"""
     assert example2 == []
@@ -29,7 +29,6 @@ def test_part1_example(example1):
     assert aoc.part1(example1) == 150
 
 
-@pytest.mark.skip(reason="not implemented")
-def test_part2_example(example2):
+def test_part2_example(example1):
     """Test part two on example data"""
-    assert aoc.part2(example2) == []
+    assert aoc.part2(example1) == 900

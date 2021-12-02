@@ -4,7 +4,6 @@ import sys
 def parse(puzzle_input):
     """Parse input"""
     lst = [line for line in puzzle_input.split("\n")]
-    #dct = {line.split()[0]:int(line.split()[1]) for line in lst}
     return lst
 
 
@@ -32,18 +31,29 @@ def part1(data):
 
     return(horizDist * vertDist)
 
-    
-
-
-
-
-
 def part2(data):
     """
-    Solve part 2, not useful for an arbitrary window size.
-    
+    Solve part 2. Forward commands increase hoizontal position by the value 
+    and the vertical position by aim * the value.
+    Up and down change the value of aim by the value indicated.
     """
+    aim = 0
+    horizDist = 0
+    vertDist = 0
 
+    for line in data:
+        direction = line.split()[0]
+        val = int(line.split()[1])
+
+        if direction == 'forward':
+            horizDist += val
+            vertDist += (aim * val)
+        elif direction == 'up':
+            aim -= val
+        else:
+            aim += val
+
+    return(horizDist * vertDist)
 
 def solve(puzzle_input):
     """Solve the puzzle for the given input"""
