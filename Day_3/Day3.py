@@ -1,5 +1,6 @@
 import pathlib
 import sys
+from itertools import count, filterfalse
 
 def parse(puzzle_input):
     """Parse input"""
@@ -8,6 +9,7 @@ def parse(puzzle_input):
 
 def most_common(x):
     return max(x, key = x.count)
+
 
 def part1(data):
     """
@@ -33,7 +35,36 @@ def part2(data):
     """
     Solve part 2.
     """
+    inputs = data
+    # O2 Generator Rating
+    oxygen = 0
+    for col in range(len(data)):
+        lst_tup = list(zip(*inputs))
+        zeros = lst_tup[col].count('0')
+        ones = lst_tup[col].count('1')
+        common = '0'
+        if (ones >= zeros):
+            common = '1'
+        inputs = [num for num in inputs if num[col] == common]
+        if len(inputs) == 1:
+            oxygen = int(inputs[0],2)
+            break
+    # C02 Scrubber
+    co2 = 0
+    inputs = data
+    for col in range(len(data)):
+        lst_tup = list(zip(*inputs))
+        zeros = lst_tup[col].count('0')
+        ones = lst_tup[col].count('1')
+        common = '0'
+        if (ones < zeros):
+            common = '1'
+        inputs = [num for num in inputs if num[col] == common]
+        if len(inputs) == 1:
+            co2 = int(inputs[0],2)
+            break
     
+    return(oxygen * co2)
 
 def solve(puzzle_input):
     """Solve the puzzle for the given input"""
