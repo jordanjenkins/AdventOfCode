@@ -3,22 +3,19 @@ import sys
 
 def parse(puzzle_input):
     """Parse input"""
-    lst = [line for line in puzzle_input.split("\n")]
-    lst_tup = [tuple(map(int, [char for char in x]))for x in lst]
-    return lst_tup
+    return [line for line in puzzle_input.split("\n")]
+    
 
-
+def most_common(x):
+    return max(x, key = x.count)
 
 def part1(data):
     """
-    Solve part 1, using a series of commands 'forward 1' 'down 5'
-    a sub can navigate. Output is product of total vertical 
-    and horizontal position.
+    Solve part 1.
     """
-    def most_common(x):
-        return max(x, key = x.count)
+    lst_tup = [tuple(map(int, [char for char in x]))for x in data]
 
-    bin_lst = [most_common(i) for i in zip(*data)]
+    bin_lst = [most_common(i) for i in zip(*lst_tup)]
 
     gamma = 0
     for ele in bin_lst:
@@ -34,9 +31,7 @@ def part1(data):
 
 def part2(data):
     """
-    Solve part 2. Forward commands increase hoizontal position by the value 
-    and the vertical position by aim * the value.
-    Up and down change the value of aim by the value indicated.
+    Solve part 2.
     """
     
 

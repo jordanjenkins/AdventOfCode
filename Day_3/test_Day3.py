@@ -16,10 +16,9 @@ def example2():
 
 def test_parse_example1(example1):
     """Test that example input is properly parsed"""
-    assert example1 == [(0, 0, 1, 0, 0), (1, 1, 1, 1, 0), (1, 0, 1, 1, 0),
-                        (1, 0, 1, 1, 1), (1, 0, 1, 0, 1), (0, 1, 1, 1, 1),
-                        (0, 0, 1, 1, 1), (1, 1, 1, 0, 0), (1, 0, 0, 0, 0),
-                        (1, 1, 0, 0, 1), (0, 0, 0, 1, 0), (0, 1, 0, 1, 0)]
+    assert example1 == ['00100', '11110', '10110', '10111', '10101',
+                        '01111', '00111', '11100', '10000', '11001',
+                        '00010', '01010']
 
 @pytest.mark.skip(reason="data same as example 1")
 def test_parse_example2(example2):
@@ -31,7 +30,7 @@ def test_part1_example(example1):
     """Test part one on example data"""
     assert aoc.part1(example1) == 198
 
-@pytest.mark.skip(reason="Not yet implemented")
+# @pytest.mark.skip(reason="Not yet implemented")
 def test_part2_example(example1):
     """Test part two on example data"""
-    assert aoc.part2(example1) == 900
+    assert aoc.part2(example1) == 230
